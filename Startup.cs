@@ -53,7 +53,8 @@ namespace API
             app.UseRouting();
             app.UseCors(opt =>
             {
-                opt.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
+                // Added the AllowCredentials in order to allow us to pass cookies to and from the client on a different domain
+                opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000");
             });
 
             app.UseAuthorization();
